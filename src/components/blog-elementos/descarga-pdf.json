@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_blog_elementos_descarga_pdfs",
+  "info": {
+    "displayName": "Descarga_PDF"
+  },
+  "options": {},
+  "attributes": {
+    "archivo_pdf": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "titulo_descarga": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

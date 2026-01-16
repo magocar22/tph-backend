@@ -42,9 +42,6 @@
     "descripcion_corta": {
       "type": "text"
     },
-    "descripcion_larga": {
-      "type": "blocks"
-    },
     "inversores": {
       "type": "relation",
       "relation": "manyToMany",
@@ -59,6 +56,14 @@
         "files",
         "videos",
         "audios"
+      ]
+    },
+    "cuerpo": {
+      "type": "dynamiczone",
+      "components": [
+        "blog-elementos.parrafo",
+        "blog-elementos.foto-articulo",
+        "blog-elementos.descarga-pdf"
       ]
     }
   }

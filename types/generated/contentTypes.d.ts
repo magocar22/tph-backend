@@ -442,10 +442,16 @@ export interface ApiNoticiaNoticia extends Struct.CollectionTypeSchema {
   };
   attributes: {
     categoria: Schema.Attribute.String;
-    contenido: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    cuerpo: Schema.Attribute.DynamicZone<
+      [
+        'blog-elementos.parrafo',
+        'blog-elementos.foto-articulo',
+        'blog-elementos.descarga-pdf',
+      ]
+    >;
     descripcion: Schema.Attribute.Text;
     fecha: Schema.Attribute.Date;
     imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
@@ -478,8 +484,14 @@ export interface ApiProyectoProyecto extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    cuerpo: Schema.Attribute.DynamicZone<
+      [
+        'blog-elementos.parrafo',
+        'blog-elementos.foto-articulo',
+        'blog-elementos.descarga-pdf',
+      ]
+    >;
     descripcion_corta: Schema.Attribute.Text;
-    descripcion_larga: Schema.Attribute.Blocks;
     documentos_privados: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true

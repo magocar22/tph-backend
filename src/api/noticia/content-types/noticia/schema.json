@@ -21,9 +21,6 @@
     "descripcion": {
       "type": "text"
     },
-    "contenido": {
-      "type": "blocks"
-    },
     "imagen": {
       "type": "media",
       "multiple": false,
@@ -39,6 +36,14 @@
     },
     "fecha": {
       "type": "date"
+    },
+    "cuerpo": {
+      "type": "dynamiczone",
+      "components": [
+        "blog-elementos.parrafo",
+        "blog-elementos.foto-articulo",
+        "blog-elementos.descarga-pdf"
+      ]
     }
   }
 }

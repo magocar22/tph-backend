@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_blog_elementos_parrafos",
+  "info": {
+    "displayName": "Parrafo"
+  },
+  "options": {},
+  "attributes": {
+    "texto": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}
