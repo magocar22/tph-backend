@@ -1,5 +1,3 @@
-module.exports = () => ({});
-
 export default ({ env }) => ({
   upload: {
     config: {
