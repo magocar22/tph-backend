@@ -430,6 +430,67 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHechoRelevanteHechoRelevante
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'hecho_relevantes';
+  info: {
+    displayName: 'Hecho Relevante';
+    pluralName: 'hecho-relevantes';
+    singularName: 'hecho-relevante';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    archivo: Schema.Attribute.Media<'files'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fecha: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hecho-relevante.hecho-relevante'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLeadLead extends Struct.CollectionTypeSchema {
+  collectionName: 'leads';
+  info: {
+    displayName: 'Lead';
+    pluralName: 'leads';
+    singularName: 'lead';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    atendido: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::lead.lead'> &
+      Schema.Attribute.Private;
+    mensaje: Schema.Attribute.Text;
+    nombre: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    telefono: Schema.Attribute.String;
+    tipo: Schema.Attribute.Enumeration<['cliente', 'inversor']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNoticiaNoticia extends Struct.CollectionTypeSchema {
   collectionName: 'noticias';
   info: {
@@ -464,6 +525,42 @@ export interface ApiNoticiaNoticia extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'titulo'>;
     titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPaginaAccionistaPaginaAccionista
+  extends Struct.SingleTypeSchema {
+  collectionName: 'pagina_accionistas';
+  info: {
+    displayName: 'Pagina Accionista';
+    pluralName: 'pagina-accionistas';
+    singularName: 'pagina-accionista';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    documentos_financieros: Schema.Attribute.Component<
+      'corporativo.documento-descargable',
+      true
+    >;
+    documentos_generales: Schema.Attribute.Component<
+      'corporativo.documento-descargable',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pagina-accionista.pagina-accionista'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1035,7 +1132,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::hecho-relevante.hecho-relevante': ApiHechoRelevanteHechoRelevante;
+      'api::lead.lead': ApiLeadLead;
       'api::noticia.noticia': ApiNoticiaNoticia;
+      'api::pagina-accionista.pagina-accionista': ApiPaginaAccionistaPaginaAccionista;
       'api::proyecto.proyecto': ApiProyectoProyecto;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

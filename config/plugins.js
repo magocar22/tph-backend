@@ -14,4 +14,24 @@ export default ({ env }) => ({
       },
     },
   },
+
+  // 2. Configuración de Email (Usando Resend vía SMTP)
+  email: {
+    config: {
+      provider: 'nodemailer',
+      providerOptions: {
+        host: 'smtp.resend.com', // Servidor de Resend
+        port: 465,
+        secure: true,
+        auth: {
+          user: 'resend',        // El usuario SIEMPRE es 'resend'
+          pass: env('RESEND_API_KEY'), // Tu clave API
+        },
+      },
+      settings: {
+        defaultFrom: 'onboarding@resend.dev', // Usa este correo de prueba al principio
+        defaultReplyTo: 'info@tuprimerhogar.es', // Cambia esto a tu correo de contacto
+      },
+    },
+  },
 });

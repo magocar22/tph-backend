@@ -33,12 +33,26 @@ export interface BlogElementosParrafo extends Struct.ComponentSchema {
   };
 }
 
+export interface CorporativoDocumentoDescargable
+  extends Struct.ComponentSchema {
+  collectionName: 'components_corporativo_documento_descargables';
+  info: {
+    displayName: 'Documento Descargable';
+  };
+  attributes: {
+    archivo: Schema.Attribute.Media<'files'>;
+    subtitulo: Schema.Attribute.String;
+    titulo: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blog-elementos.descarga-pdf': BlogElementosDescargaPdf;
       'blog-elementos.foto-articulo': BlogElementosFotoArticulo;
       'blog-elementos.parrafo': BlogElementosParrafo;
+      'corporativo.documento-descargable': CorporativoDocumentoDescargable;
     }
   }
 }
